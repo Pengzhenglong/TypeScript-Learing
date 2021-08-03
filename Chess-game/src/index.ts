@@ -49,19 +49,28 @@ function checkWin(player: Player) {
   1.使用some方法遍历数组，并使用some方法的返回值作为返回结果
   */
   //  使用了some方法
-  let isWin = winsArr.some(function(item) {
+  let isWin = winsArr.some(function (item) {
     // 获取到每种获胜情况对应的3个单元格元素
     // 2.1 先拿到每种获胜情况的三个索引
     // console.log(item)
     let cellIndex1 = item[0]
     let cellIndex2 = item[1]
     let cellIndex3 = item[2]
-    console.log(cellIndex1,cellIndex2,cellIndex3)
+    console.log(cellIndex1, cellIndex2, cellIndex3)
     // 2.2  通过这三个索引从cells中获取到对应的单元格元素
-    let  cell1  =cells[cellIndex1]
-    let  cell2  = cells[cellIndex2]
-    let  cell3  = cells[cellIndex3]
-    console.log(cell1,cell2,cell3)
+    let cell1 = cells[cellIndex1]
+    let cell2 = cells[cellIndex2]
+    let cell3 = cells[cellIndex3]
+    console.log(cell1, cell2, cell3)
+    // 3. 判断这3个单元格元素是否同时包含当前玩家的类名
+    // 1.元素是否包含类名classList.contains()
+    // 2.同时包含(第一个包含 并且 第二个 包含 并且第三个包含)
+    // 逻辑运算符  && 逻辑与
+    if (cell1.classList.contains(player) && cell2.classList.contains(player) && cell3.classList.contains(player)
+    ) { 
+      return  true
+    }
+    return  false
   })
   return isWin
 }

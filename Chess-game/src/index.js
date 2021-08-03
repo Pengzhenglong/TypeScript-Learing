@@ -54,6 +54,14 @@ function checkWin(player) {
         var cell2 = cells[cellIndex2];
         var cell3 = cells[cellIndex3];
         console.log(cell1, cell2, cell3);
+        // 3. 判断这3个单元格元素是否同时包含当前玩家的类名
+        // 1.元素是否包含类名classList.contains()
+        // 2.同时包含(第一个包含 并且 第二个 包含 并且第三个包含)
+        // 逻辑运算符  && 逻辑与
+        if (cell1.classList.contains(player) && cell2.classList.contains(player) && cell3.classList.contains(player)) {
+            return true;
+        }
+        return false;
     });
     return isWin;
 }
