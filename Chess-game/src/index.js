@@ -17,9 +17,18 @@ cells.forEach(function (item) {
 function clickcell(event) {
     var target = event.target;
     target.classList.add(currentPlayer);
+    // 调用判嬴函数判断是否获胜
+    var isWin = checkWin(currentPlayer);
+    if (isWin) {
+        console.log('当前玩家获胜了', currentPlayer);
+    }
     // 根据当前玩家，得到另一个玩家
     currentPlayer = currentPlayer === Player.X ? Player.O : Player.X;
     // 处理下一步提示
     gameBord.classList.remove(Player.X, Player.O);
     gameBord.classList.add(currentPlayer);
+}
+// 封装判嬴函数
+function checkWin(player) {
+    return true;
 }
