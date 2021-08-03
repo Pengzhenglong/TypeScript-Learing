@@ -3,6 +3,13 @@ enum Player {
   O = 'o'
 }
 
+// 判嬴函数
+let winsArr = [
+  [0, 1, 2], [3, 4, 5], [6, 7, 8],  //横
+  [0, 3, 6], [1, 4, 7], [2, 5, 8],  //竖
+  [0, 4, 8], [2, 4, 6]             //斜
+]
+
 let cells = document.querySelectorAll('.cell')
 
 let gameBord = document.querySelector('#bord')
@@ -23,19 +30,38 @@ function clickcell(event: MouseEvent) {
 
   // 调用判嬴函数判断是否获胜
   let isWin = checkWin(currentPlayer)
-    if(isWin){
-      console.log('当前玩家获胜了', currentPlayer)
-    
-}
+  if (isWin) {
+    console.log('当前玩家获胜了', currentPlayer)
 
-// 根据当前玩家，得到另一个玩家
-currentPlayer = currentPlayer === Player.X ? Player.O : Player.X
-// 处理下一步提示
-gameBord.classList.remove(Player.X, Player.O)
-gameBord.classList.add(currentPlayer)
+  }
+
+  // 根据当前玩家，得到另一个玩家
+  currentPlayer = currentPlayer === Player.X ? Player.O : Player.X
+  // 处理下一步提示
+  gameBord.classList.remove(Player.X, Player.O)
+  gameBord.classList.add(currentPlayer)
 }
 
 // 封装判嬴函数
 function checkWin(player: Player) {
-  return true
+  /*  
+  实现判嬴函数：
+  1.使用some方法遍历数组，并使用some方法的返回值作为返回结果
+  */
+  //  使用了some方法
+  let isWin = winsArr.some(function(item) {
+    // 获取到每种获胜情况对应的3个单元格元素
+    // 2.1 先拿到每种获胜情况的三个索引
+    // console.log(item)
+    let cellIndex1 = item[0]
+    let cellIndex2 = item[1]
+    let cellIndex3 = item[2]
+    console.log(cellIndex1,cellIndex2,cellIndex3)
+    // 2.2  通过这三个索引从cells中获取到对应的单元格元素
+    let  cell1  =cells[cellIndex1]
+    let  cell2  = cells[cellIndex2]
+    let  cell3  = cells[cellIndex3]
+    console.log(cell1,cell2,cell3)
+  })
+  return isWin
 }
