@@ -49,7 +49,7 @@ function checkWin(player: Player) {
   1.使用some方法遍历数组，并使用some方法的返回值作为返回结果
   */
   //  使用了some方法
-  return  winsArr.some(function (item) {
+  return winsArr.some(function (item) {
     // 获取到每种获胜情况对应的3个单元格元素
     // 2.1 先拿到每种获胜情况的三个索引
     // console.log(item)
@@ -64,18 +64,18 @@ function checkWin(player: Player) {
     // 1.元素是否包含类名classList.contains()
     // 2.同时包含(第一个包含 并且 第二个 包含 并且第三个包含)
     // 逻辑运算符  && 逻辑与
-  // let  a=  cells[cellIndex1]
-    if (hasClass(cells[cellIndex1],player) && 
-    hasClass(cells[cellIndex2],player) && 
-    hasClass(cells[cellIndex3],player) 
-    ) { 
-      return  true
+    // let  a=  cells[cellIndex1]
+    if (hasClass(cells[cellIndex1], player) &&
+      hasClass(cells[cellIndex2], player) &&
+      hasClass(cells[cellIndex3], player)
+    ) {
+      return true
     }
-    return  false
+    return false
   })
 
 }
 // 封装  hasClass函数 ：判断DOM元素 是否包含某个类名
-function  hasClass(el:Element,name:String){
-  return  el.classList.contains(name)
+function hasClass(el: Element, name: string) {
+  return el.classList.contains(name)
 }
