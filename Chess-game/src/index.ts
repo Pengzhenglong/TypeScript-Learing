@@ -89,7 +89,6 @@ function clickcell(event: MouseEvent) {
     winner.innerText = '平局'
     return
   }
-  
 
   // 根据当前玩家，得到另一个玩家
   currentPlayer = currentPlayer === Player.X ? Player.O : Player.X
